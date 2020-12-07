@@ -1,3 +1,34 @@
+/*var string = "my name is manav";
+console.log(string);
+
+var num = 10;
+console.log(num);
+
+var bool = true;
+console.log(bool);
+
+var object = null;
+console.log(object);*/
+
+/*var num = 10;
+var arr = [1,"time", num];
+
+console.log(arr);
+
+var arr1 = [[1,2],["time",num],[3,4]];
+//
+console.log(arr1.length);
+arr1.push(num)
+console.log(rr1);
+
+arr1.pop(num);
+console.log(arr1);*/
+
+
+
+
+
+
 const Engine = Matter.Engine;
 const World= Matter.World;
 const Bodies = Matter.Bodies;
@@ -6,7 +37,7 @@ var constrainedlog;
 var engine, world;
 var box1, pig1;
 var bg;
-
+var gameState = "onSling";
 function preload(){
     bg=loadImage("sprites/bg.png");
 }
@@ -72,13 +103,18 @@ function draw(){
     
 }
 function mouseDragged(){
+    if (gameState === "onSling"){
     Matter.Body.setPosition(bird.body,{x:mouseX,y:mouseY})
+
+}
 }
 function mouseReleased(){
     slingshot.fly()
+    gameState="launched"
 }
 function keyPressed(){
     if(keyCode===32){
-        slingshot.attach(bird.body)
+    slingshot.attach(bird.body)
+        
     }
 }
