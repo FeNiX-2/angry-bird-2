@@ -107,14 +107,12 @@ function draw(){
     slingshot.display();
     text("Score:" + score,1000,10)
     
-    
-    
 }
 function mouseDragged(){
-    if (gameState === "onSling"){
-    Matter.Body.setPosition(bird.body,{x:mouseX,y:mouseY})
- 
-}
+   // if (gameState === "onSling"){
+   Matter.Body.setPosition(bird.body,{x:mouseX,y:mouseY})
+    
+//}
 }
 function mouseReleased(){
     slingshot.fly()
@@ -122,7 +120,9 @@ function mouseReleased(){
 }
 function keyPressed(){
     if(keyCode===32){
+        bird.path=[]
     slingshot.attach(bird.body)
+     Matter.Body.setPosition(bird.body,{x:190,y:100})
         
     }
 }
@@ -134,7 +134,7 @@ async function getTime(){
     var dt = responseJSON.datetime;
     var hour = dt.slice(11,13);
     console.log(hour);
-
+    
     if(hour>9 || hour<16){
         bg2="sprites/bg2.jpg";
     }else{
